@@ -10,17 +10,12 @@ RUN \
   apt-get -yq install nginx --no-install-recommends && \
   rm -rf /var/lib/apt/lists/*
 
-RUN echo "cogregist:9849ox.VIk9/6" > /etc/nginx/.htpasswd
 COPY nginx.conf /etc/nginx/sites-available/proxy
-
-RUN echo "env PROXY_FRONT_PORT;" >> /etc/nginx/nginx.conf
-RUN echo "env PROXY_BACK_PORT;" >> /etc/nginx/nginx.conf
-RUN echo "env PROXY_BACK_SERVER;" >> /etc/nginx/nginx.conf
-
 RUN ln -s /etc/nginx/sites-available/proxy /etc/nginx/sites-enabled/proxy
 
-WORKDIR /etc/nginx
+COPY startup.sh startup.sh
+RUN chmod 744 startup.sh
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["./startup.sh"]
 EXPOSE 5000
 

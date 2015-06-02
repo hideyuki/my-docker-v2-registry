@@ -1,4 +1,4 @@
-FROM registry:2.0.1
+FROM registry:0.9.1
 MAINTAINER Hideyuki Takei <takehide22@gmail.com>
 
 ADD ./config.yml /docker-registry/config/config.yml
