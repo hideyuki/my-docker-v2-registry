@@ -1,7 +1,5 @@
 redis:
   image: redis
-  ports:
-    - 6379:6379
 
 server:
   build: registry-server
@@ -30,9 +28,7 @@ frontend:
 nginx:
   build: nginx-proxy
   environment:
-    PROXY_FRONT_PORT: 5000
-    PROXY_BACK_PORT: 5000
-    PROXY_BACK_SERVER: server
+    NGINX_BASIC_HTPASSWD: "*******:********"
   ports:
     - 5000:5000
   links:
