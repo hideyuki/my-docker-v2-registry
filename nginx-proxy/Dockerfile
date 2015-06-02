@@ -22,5 +22,5 @@ RUN ln -s /etc/nginx/sites-available/proxy /etc/nginx/sites-enabled/proxy
 WORKDIR /etc/nginx
 
 CMD ["nginx", "-g", "daemon off;"]
-EXPOSE 47821
+EXPOSE 5000
 
